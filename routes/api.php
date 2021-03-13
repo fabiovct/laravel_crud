@@ -14,6 +14,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
+// Route::middleware('auth:api')->get('/user', function (Request $request) {
+//     return $request->user();
+// });
+
+
+Route::post('login', 'AuthenticatorController@login');
+// Route::post('validateToken', 'AuthenticatorController@validateToken');
+
+// Route::group(['middleware' => 'jwt'], function () {
+
+//     Route::group(['prefix' => 'products'], function () {
+//         Route::get('list-products', 'CustomerController@listProducts');
+//     });
+// });
