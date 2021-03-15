@@ -22,9 +22,13 @@ use Illuminate\Support\Facades\Route;
 Route::post('login', 'AuthenticatorController@login');
 // Route::post('validateToken', 'AuthenticatorController@validateToken');
 
-// Route::group(['middleware' => 'jwt'], function () {
+Route::group(['middleware' => 'jwt'], function () {
 
-//     Route::group(['prefix' => 'products'], function () {
-//         Route::get('list-products', 'CustomerController@listProducts');
-//     });
-// });
+    Route::group(['prefix' => 'products'], function () {
+        Route::get('list-products', 'ProductsController@listProducts');
+        Route::get('select-product', 'ProductsController@selectProductById');
+        Route::post('create-products', 'ProductsController@createProduct');
+        Route::put('update-products', 'ProductsController@updateProduct');
+        Route::post('delete-products', 'ProductsController@deleteProduct');
+    });
+});
