@@ -18,6 +18,9 @@ class AuthenticatorController extends Controller
 
     public function login(Request $request) {
 
+        try {
+            //code...
+
         $login = User::where('email','=',$request->email)->where('password','=',md5($request->password));
         if($login->count() == 1){
             $dados_user = User::where('email','=',$request->email)->where('password','=',md5($request->password))->first();
@@ -42,6 +45,11 @@ class AuthenticatorController extends Controller
         } else {
             return 0;
         }
+
+    } catch (\Throwable $th) {
+       return $th;
+    }
+
     }
 
     // public function validateToken(Request $request){
